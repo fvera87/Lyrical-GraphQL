@@ -1,16 +1,16 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import query from '../queries/fetchSongs'
 import deleteMutation from '../queries/deleteSong'
-import {graphql} from 'react-apollo'
-import {Link} from 'react-router'
+import { graphql } from 'react-apollo'
+import { Link } from 'react-router'
 class SongList extends Component {
   onSongDelete (id) {
     this.props.mutate({
-      variables: {id}
+      variables: { id }
     }).then(() => this.props.data.refetch())
   }
   renderSongs () {
-    return this.props.data.songs.map(({id, title}) => {
+    return this.props.data.songs.map(({ id, title }) => {
       return (
         <li key={id} className='collection-item'>
           {title}
